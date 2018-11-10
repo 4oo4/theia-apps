@@ -63,8 +63,8 @@ RUN set -ex \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
 ## Common ENV
-ENV LC_ALL=C.UTF-8
-ENV LANG=en_US.UTF-8
+ENV LC_ALL C.UTF-8
+ENV LANG en_US.UTF-8
 
 #Developer tools
 
