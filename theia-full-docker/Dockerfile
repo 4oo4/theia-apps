@@ -62,10 +62,15 @@ RUN set -ex \
   && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarnpkg \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
+## Common ENV
+ENV LC_ALL=C.UTF-8
+ENV LANG=en_US.UTF-8
+
 #Developer tools
 
 ## Git and sudo (sudo needed for user override)
-RUN apt-get -y install git sudo
+## Nano/moreutils added for convenience
+RUN apt-get -y install git sudo nano moreuitls
 
 #LSPs
 
@@ -79,6 +84,8 @@ ENV GOPATH=/usr/local/go-packages
 ENV GO_ROOT=/usr/local/go
 ENV PATH $PATH:/usr/local/go/bin
 ENV PATH $PATH:${GOPATH}/bin
+
+ENV 
 
 RUN curl -sS https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz | tar -C /usr/local -xzf -
 RUN go get -u -v github.com/ramya-rao-a/go-outline
